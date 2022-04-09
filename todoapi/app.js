@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const express = require('express');
 const expressOasGenerator = require('express-oas-generator');
+
 var todosRouter = require('./routes/todos'); 
 var cors = require('cors')
 
@@ -20,6 +21,4 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/todos', todosRouter);
-expressOasGenerator.handleRequests();
-
 module.exports = app;
