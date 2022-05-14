@@ -39,6 +39,24 @@ describe('TODOs API', () => {
             });
     });
 
+    it('GET /todos/names/name ==> a specific Todos 200 OK', () => {
+
+        return request(app)
+            .get("/todos/names/KGF2")
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then((response) => {
+                expect(response.body).toEqual(
+                    expect.objectContaining(
+                        {
+                            id: expect.any(Number),
+                            name: "KGF2",
+                            done: expect.any(Boolean)
+                        }
+                    ));
+            });
+    });
+
     it('GET /todos/id ==> a specific Todos 404 NOT Found', () => {
 
         return request(app)
@@ -50,7 +68,7 @@ describe('TODOs API', () => {
         return request(app)
             .post("/todos")
             .send({
-                name: "watch KGF2"
+                name: "KGF2"
             })
             .expect('Content-Type', /json/)
             .expect(201)
@@ -59,7 +77,7 @@ describe('TODOs API', () => {
                     expect.objectContaining(
                         {
                             id: expect.any(Number),
-                            name: "watch KGF2",
+                            name: "KGF2",
                             done: false
                         }
                     ));

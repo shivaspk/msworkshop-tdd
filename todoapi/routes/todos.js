@@ -19,6 +19,18 @@ router.get('/:id', function (req, res, next) {
     res.json(result);
 });
 
+
+
+/* GET todo by ID listing. */
+router.get('/names/:name', function (req, res, next) {
+    const newTodo = {
+        id: 5,
+        name: req.params.name,
+        done: false
+    }
+    res.json(newTodo);
+});
+
 /* POST todos */
 router.post('/', function (req, res, next) {
     const { body } = req;
