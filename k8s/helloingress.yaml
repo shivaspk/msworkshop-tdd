@@ -14,3 +14,10 @@ spec:
             name: hello
             port:
               number: 80
+      - path: /todos
+        pathType: Prefix
+        backend:
+          service:
+            name: todo
+            port:
+              number: 80
